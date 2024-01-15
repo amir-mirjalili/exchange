@@ -1,5 +1,12 @@
 ## Description
 
+follow steps:
+
+1.copy and rename .env.example to .env and make the changes
+
+2.create DB on your postgress dbstore
+3.run migrations to generate tables and recieve default values
+
 ## Installation
 
 ```bash
@@ -26,9 +33,13 @@ $ npm run start:prod
 $ npm run test
 ```
 
-to migrate run:
+## Migration
 
 ```bash
-npx typeorm migration:create ./src/migrations/{migrationName}
+# generate migration file
+$ npx typeorm migration:create ./src/migrations/{migrationName}
+
+# run migration files
+$ migration:run
 
 ```
