@@ -87,5 +87,15 @@ describe('GetExchangesRateService', () => {
 
       expect(result).toBe(120); // 100 * 1.2
     });
+
+    it('should calculate crypto rate with both crypto symbols', async () => {
+      const rate = await service.calculateCryptoBySymbols('BTC', 'ETH', 100);
+      expect(rate).toBeGreaterThan(0);
+    });
+
+    it('should calculate crypto rate with EUR as from currency', async () => {
+      const rate = await service.calculateCryptoBySymbols('EUR', 'ETH', 100);
+      expect(rate).toBeGreaterThan(0);
+    });
   });
 });
