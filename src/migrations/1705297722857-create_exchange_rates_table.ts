@@ -57,9 +57,15 @@ export class CreateExchangeRatesTable1705297722857
         INSERT INTO exchange_rate (from_currency_id, to_currency_id, rate)
         VALUES
           ((SELECT id FROM currency WHERE symbol = 'USD'), (SELECT id FROM currency WHERE symbol = 'IRR'), 50000),
+          ((SELECT id FROM currency WHERE symbol = 'IRR'), (SELECT id FROM currency WHERE symbol = 'USD'), 0.000024),
           ((SELECT id FROM currency WHERE symbol = 'EUR'), (SELECT id FROM currency WHERE symbol = 'USD'), 1.10),
+          ((SELECT id FROM currency WHERE symbol = 'USD'), (SELECT id FROM currency WHERE symbol = 'EUR'), 0.91),
           ((SELECT id FROM currency WHERE symbol = 'EUR'), (SELECT id FROM currency WHERE symbol = 'BTC'), 0.000026),
-          ((SELECT id FROM currency WHERE symbol = 'EUR'), (SELECT id FROM currency WHERE symbol = 'ETH'), 0.00044)
+          ((SELECT id FROM currency WHERE symbol = 'BTC'), (SELECT id FROM currency WHERE symbol = 'EUR'), 38956.66),
+          ((SELECT id FROM currency WHERE symbol = 'BTC'), (SELECT id FROM currency WHERE symbol = 'ETH'), 16.94),
+          ((SELECT id FROM currency WHERE symbol = 'EUR'), (SELECT id FROM currency WHERE symbol = 'ETH'), 0.00044),
+          ((SELECT id FROM currency WHERE symbol = 'ETH'), (SELECT id FROM currency WHERE symbol = 'EUR'), 24.77),
+          ((SELECT id FROM currency WHERE symbol = 'ETH'), (SELECT id FROM currency WHERE symbol = 'BTC'), 0.059)
       `);
   }
 
