@@ -1,7 +1,4 @@
-
 ## Description
-
-
 
 ## Installation
 
@@ -27,4 +24,11 @@ $ npm run start:prod
 ```bash
 # unit tests
 $ npm run test
+```
+
+to migrate run:
+
+```bash
+npx typeorm migration:create ./src/migrations/{migrationName}
+
 ```
