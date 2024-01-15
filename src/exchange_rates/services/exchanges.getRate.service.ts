@@ -15,7 +15,9 @@ export class GetExchangesRateService {
 
   /**
    * get item by symbol from currency and return the rate
-   * @param symbol
+   * @param fromSymbol
+   * @param toSymbol
+   * @param amount
    */
   async calculateBySymbols(
     fromSymbol: string,
@@ -27,6 +29,34 @@ export class GetExchangesRateService {
         where: {
           fromCurrency: { symbol: fromSymbol },
           toCurrency: { symbol: toSymbol },
+        },
+      });
+
+      if (exchange) {
+        return amount * exchange.rate;
+      }
+      return 0;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  /**
+   * get just fiat item by symbol from currency and return the rate
+   * @param fromSymbol
+   * @param toSymbol
+   * @param amount
+   */
+  async calculateFiatBySymbols(
+    fromSymbol: string,
+    toSymbol: string,
+    amount: number,
+  ): Promise<number> {
+    try {
+      const exchange = await this.exchangeRepository.findOne({
+        where: {
+          fromCurrency: { symbol: fromSymbol, type: 'Fiat' },
+          toCurrency: { symbol: toSymbol, type: 'Fiat' },
         },
       });
 
